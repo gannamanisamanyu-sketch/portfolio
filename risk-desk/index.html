@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk Desk, a position sizing game</title>
+<meta name="description" content="A small browser game about position sizing and drawdown limits.">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="game.css">
+</head>
+<body class="game-page">
+<header class="game-top">
+  <a href="../" class="back">&larr; Portfolio</a>
+  <h1>Risk Desk</h1>
+  <span class="tag">prototype</span>
+</header>
+
+<main class="game">
+  <section class="hud" aria-label="Account">
+    <div><span class="k">Balance</span><span class="v" id="balance"></span></div>
+    <div><span class="k">Peak</span><span class="v" id="peak"></span></div>
+    <div><span class="k">Round</span><span class="v" id="round"></span></div>
+    <div><span class="k">Best run</span><span class="v" id="best"></span></div>
+  </section>
+
+  <div class="dd" aria-label="Drawdown">
+    <div class="dd-head"><span class="k">Drawdown</span><span id="ddText"></span></div>
+    <div class="dd-track"><div class="dd-fill" id="ddFill"></div></div>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="chart" aria-label="Price chart"></canvas>
+    <div class="overlay" id="overlay" hidden>
+      <div class="overlay-card" role="dialog" aria-labelledby="overTitle">
+        <h2 id="overTitle"></h2>
+        <p id="overBody"></p>
+        <p class="muted" id="overStats"></p>
+        <button type="button" id="again" class="primary">Play again</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="message" id="message" aria-live="polite"></p>
+
+  <section class="controls" aria-label="Controls">
+    <div class="size-row">
+      <span class="k">Risk per trade</span>
+      <div id="sizes" class="sizes"></div>
+    </div>
+    <p class="muted" id="riskNote"></p>
+    <div class="actions">
+      <button type="button" id="long" class="long">Long <kbd>L</kbd></button>
+      <button type="button" id="short" class="short">Short <kbd>S</kbd></button>
+      <button type="button" id="pass" class="pass">Pass <kbd>P</kbd></button>
+    </div>
+  </section>
+
+  <section class="how">
+    <h2>How to play</h2>
+    <p id="rules"></p>
+    <p class="muted">Keys: 1 to 4 set the risk size, L long, S short, P pass. This is a game with a made-up random market. It is not investment advice.</p>
+  </section>
+
+  <section class="how">
+    <h2>Trade log</h2>
+    <ul id="log" class="log"></ul>
+  </section>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
